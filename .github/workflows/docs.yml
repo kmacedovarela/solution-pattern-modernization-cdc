@@ -11,8 +11,6 @@ jobs:
     name: "Generate adoc file for single page"
     runs-on: ubuntu-latest
     steps:
-      - name: list dir
-        run: echo `ls -l 3 /github/workspace/`
       - name: Generate single page
         id: single-adoc-generator
         uses: kmacedovarela/single-adoc-generator-action@v1
