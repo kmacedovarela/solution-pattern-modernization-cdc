@@ -1,4 +1,4 @@
-name: docs
+name: generate-docs
 
 on:
   push:
@@ -7,6 +7,20 @@ on:
 env:
   SITE_DIR: "gh-pages"
 jobs:
+  process-single-adoc:
+    name: "Generate adoc file for single page"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate single page
+        id: single-adoc-generator
+        uses: kmacedovarela/single-adoc-generator-action@v1
+        with:
+          file-to-process: 'documentation/modules/ROOT/pages/single-page-pre.adoc'
+          generated-file-path: '/'
+      # Use the output from the `hello` step
+      - name: Processed adoc file
+        run: echo "A new file was generated -> ${{ steps.single-adoc-generator.outputs.generated-file }}"
+
   build_site:
     name: "Build site with Antora"
     runs-on: [ubuntu-latest]
