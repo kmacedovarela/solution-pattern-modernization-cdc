@@ -21,6 +21,6 @@ jobs:
           generated-file-path: '/'
       # Use the output from the `hello` step
       - name: Processed adoc file
-        run: echo "A new file was generated -> ${{ steps.single-adoc-generator.outputs.generated-file }}"
+        run: echo "A new file was generated -> ${{ steps.process-single-adoc.outputs.generated-file }}"
 
 
